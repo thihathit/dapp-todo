@@ -1,19 +1,29 @@
 <template>
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Hello Vue 3 + Vite" />
+    <router-view v-slot="{ Component }">
+        <transition name="page-effect" mode="out-in">
+            <keep-alive>
+                <component :is="Component" />
+            </keep-alive>
+        </transition>
+    </router-view>
 </template>
 
 <script setup>
-import HelloWorld from "./components/HelloWorld.vue"
-</script>
+import { inject } from "vue"
 
-<style lang="scss">
-#app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-}
-</style>
+import actionDefaultPageTitle from "@/actions/DefaultPageTitle"
+import actionRouteAuth from "@/actions/RouteAuth"
+
+const MetaMask = inject("services/metaMask")
+const Network = inject("services/network")
+
+// Init MetaMask sdk
+MetaMask.init()
+
+// Init BlockChain network
+Network.init()
+
+// DOM Initialize
+actionRouteAuth()
+actionDefaultPageTitle()
+</script>

@@ -1,0 +1,39 @@
+@import "@/assets/css/mixins/fonts.scss";
+
+@mixin x-prefixes() {
+    display: block;
+    content: " ";
+    position: absolute;
+}
+
+@mixin x-before() {
+    &:before {
+        @include x-prefixes();
+    }
+}
+
+@mixin x-after() {
+    &:after {
+        @include x-prefixes();
+    }
+}
+
+@mixin reset-button($block: true) {
+    @if $block {
+        display: block;
+    }
+
+    color: inherit;
+
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    text-align: inherit;
+}
+
+@mixin reset-input() {
+    display: block;
+    background: none;
+    border: none;
+}

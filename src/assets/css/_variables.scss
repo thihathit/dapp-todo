@@ -1,0 +1,36 @@
+// layout
+$layout-default-maxWidth: 700px;
+$layout-default-sideGap: 20px;
+
+$layout-centerContent-maxWidth: 700px;
+$layout-centerContent-sideGap: 20px;
+
+// colors
+$color_1: #242424; // default text, etc..
+$color_2: #555; // hovered link, button, etc..
+$color_3: #ddd; // disabled elements
+$dorminant_1: #f52929; // Primary color
+$dorminant_2: #f1efef; // Primary color
+
+// font names
+$font-one: "Poppins";
+$font-two: "Padauk";
+
+@function fallback-fonts($preferFallback: false) {
+    $prefix: Helvetica, Arial;
+    $suffix: "Segoe UI", "Noto Sans Myanmar", "Myanmar Text", sans-serif;
+
+    @if ($preferFallback) {
+        @return $prefix, $preferFallback, $suffix;
+    } @else {
+        @return $prefix, $suffix;
+    }
+}
+
+:export {
+    color_1: $color_1;
+    color_2: $color_2;
+    color_3: $color_3;
+    dorminant_1: $dorminant_1;
+    dorminant_2: $dorminant_2;
+}

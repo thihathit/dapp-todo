@@ -2,23 +2,23 @@ pragma solidity >=0.5.0 <0.8.0;
 
 contract Storage {
     struct Item {
-        string passphrase;
+        string identity;
         string data;
     }
 
     mapping(string => Item) List;
 
-    event DataSaved(string passphrase, string data);
+    event DataSaved(string identity, string data);
 
-    function get(string memory passphrase) public view returns (string memory) {
-        Item memory _List = List[passphrase];
+    function get(string memory identity) public view returns (string memory) {
+        Item memory _List = List[identity];
 
         return _List.data;
     }
 
-    function set(string memory passphrase, string memory data) public {
-        List[passphrase] = Item(passphrase, data);
+    function set(string memory identity, string memory data) public {
+        List[identity] = Item(identity, data);
 
-        emit DataSaved(passphrase, data);
+        emit DataSaved(identity, data);
     }
 }
